@@ -19,7 +19,9 @@ SECTIONS_PATH = os.path.join(DATA_DIR, "sections.json")
 HISTORY_PATH = os.path.join(DATA_DIR, "history.json")
 
 app = Flask(__name__)
-app.secret_key = "closetflow_secret_key"
+
+app.secret_key = os.environ.get("SECRET_KEY", "dev_key")
+
 
 app = Flask(
     __name__,
