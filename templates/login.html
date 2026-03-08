@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<title>ClosetFlow Login</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="/static/style.css">
+
+<style>
+
+body{
+    margin:0;
+    padding:0;
+    font-family: "Segoe UI", sans-serif;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background: linear-gradient(135deg,#1e3c72,#2a5298);
+    overflow:hidden;
+}
+
+.background-animation{
+    position:absolute;
+    width:200%;
+    height:200%;
+    background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1), transparent),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1), transparent);
+    animation: moveBackground 20s infinite linear;
+}
+
+@keyframes moveBackground{
+    from{transform:translate(0,0)}
+    to{transform:translate(-200px,-200px)}
+}
+
+.login-container{
+    position:relative;
+    width:420px;
+    padding:40px;
+    border-radius:16px;
+    backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.25);
+    box-shadow:0 20px 40px rgba(0,0,0,0.25);
+    text-align:center;
+}
+
+.logo{
+    width:70px;
+    margin-bottom:15px;
+}
+
+.title{
+    color:white;
+    font-size:28px;
+    font-weight:600;
+    margin-bottom:5px;
+}
+
+.subtitle{
+    color:#e6e6e6;
+    font-size:14px;
+    margin-bottom:25px;
+}
+
+.input-group{
+    margin-bottom:18px;
+    text-align:left;
+}
+
+.input-group label{
+    font-size:13px;
+    color:#f1f1f1;
+}
+
+.input-group input{
+    width:100%;
+    margin-top:6px;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    outline:none;
+    font-size:14px;
+}
+
+.login-btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#4CAF50;
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.login-btn:hover{
+    transform:scale(1.05);
+    background:#43a047;
+}
+
+.register-link{
+    margin-top:20px;
+    color:#e6e6e6;
+    font-size:14px;
+}
+
+.register-link a{
+    color:#ffffff;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.register-link a:hover{
+    text-decoration:underline;
+}
+
+.error{
+    background:#ff5252;
+    color:white;
+    padding:10px;
+    border-radius:8px;
+    margin-bottom:15px;
+    font-size:13px;
+}
+
+@media(max-width:500px){
+
+.login-container{
+    width:90%;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="background-animation"></div>
+
+<div class="login-container">
+
+<img src="/static/logo.png" class="logo">
+
+<div class="title">ClosetFlow</div>
+<div class="subtitle">AI Powered Wardrobe Manager</div>
+
+{% if error %}
+<div class="error">{{ error }}</div>
+{% endif %}
+
+<form method="POST" action="/login">
+
+<div class="input-group">
+<label>Email</label>
+<input type="email" name="email" required>
+</div>
+
+<div class="input-group">
+<label>Password</label>
+<input type="password" name="password" required>
+</div>
+
+<button class="login-btn">Login</button>
+
+</form>
+
+<div class="register-link">
+Don't have an account? 
+<a href="/register">Create one</a>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<title>ClosetFlow Planner</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="/static/style.css">
+
+<style>
+
+body{
+margin:0;
+font-family:"Segoe UI",sans-serif;
+background:#0f172a;
+color:white;
+display:flex;
+min-height:100vh;
+}
+
+/* Sidebar */
+
+.sidebar{
+width:240px;
+background:#111827;
+padding:25px;
+display:flex;
+flex-direction:column;
+}
+
+.logo{
+width:60px;
+margin-bottom:10px;
+}
+
+.brand{
+font-size:22px;
+font-weight:600;
+margin-bottom:30px;
+}
+
+.nav a{
+display:block;
+padding:12px;
+margin-bottom:8px;
+text-decoration:none;
+color:#d1d5db;
+border-radius:8px;
+transition:0.2s;
+}
+
+.nav a:hover{
+background:#1f2937;
+color:white;
+}
+
+/* Main */
+
+.main{
+flex:1;
+padding:30px;
+overflow:auto;
+}
+
+.title{
+font-size:26px;
+margin-bottom:20px;
+}
+
+/* Planner layout */
+
+.planner-container{
+display:grid;
+grid-template-columns:250px 1fr;
+gap:25px;
+}
+
+/* Wardrobe */
+
+.wardrobe{
+background:#1e293b;
+padding:15px;
+border-radius:12px;
+}
+
+.wardrobe-title{
+margin-bottom:10px;
+font-weight:600;
+}
+
+.cloth-item{
+background:#111827;
+padding:10px;
+margin-bottom:8px;
+border-radius:8px;
+cursor:grab;
+font-size:13px;
+}
+
+.cloth-item:hover{
+background:#1f2937;
+}
+
+/* Weekly board */
+
+.week{
+display:grid;
+grid-template-columns:repeat(7,1fr);
+gap:10px;
+}
+
+.day{
+background:#1e293b;
+border-radius:10px;
+min-height:150px;
+padding:10px;
+display:flex;
+flex-direction:column;
+}
+
+.day-title{
+font-size:14px;
+margin-bottom:6px;
+font-weight:600;
+}
+
+.drop-zone{
+flex:1;
+border:2px dashed #334155;
+border-radius:8px;
+padding:6px;
+}
+
+.planned-item{
+background:#4CAF50;
+padding:6px;
+border-radius:6px;
+font-size:12px;
+margin-bottom:5px;
+}
+
+/* Controls */
+
+.controls{
+margin-top:20px;
+display:flex;
+gap:10px;
+}
+
+.btn{
+padding:10px 16px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-weight:600;
+}
+
+.save-btn{
+background:#4CAF50;
+color:white;
+}
+
+.clear-btn{
+background:#ef4444;
+color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<img src="/static/logo.png" class="logo">
+
+<div class="brand">ClosetFlow</div>
+
+<div class="nav">
+<a href="/dashboard">Dashboard</a>
+<a href="/wardrobe">Wardrobe Manager</a>
+<a href="/planner">Planner</a>
+<a href="/analytics">Analytics</a>
+<a href="/logout">Logout</a>
+
+</div>
+
+</div>
+
+
+
+<div class="main">
+
+<div class="title">Weekly Outfit Planner</div>
+
+<div class="planner-container">
+
+<!-- Wardrobe -->
+
+<div class="wardrobe">
+
+<div class="wardrobe-title">Wardrobe</div>
+
+<div id="wardrobeList">
+
+{% for cloth in clothes %}
+
+<div class="cloth-item"
+draggable="true"
+data-id="{{ cloth.id }}"
+data-name="{{ cloth.name }}">
+
+{{ cloth.name }}
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+
+
+<!-- Planner -->
+
+<div>
+
+<div class="week">
+
+{% set days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"] %}
+
+{% for d in days %}
+
+<div class="day">
+
+<div class="day-title">{{ d }}</div>
+
+<div class="drop-zone" data-day="{{ d }}"></div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<div class="controls">
+
+<button class="btn save-btn" onclick="savePlanner()">Save Plan</button>
+
+<button class="btn clear-btn" onclick="clearPlanner()">Clear</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+
+/* -------------------------
+Drag and Drop
+------------------------- */
+
+let draggedItem=null
+
+document.querySelectorAll(".cloth-item").forEach(item=>{
+
+item.addEventListener("dragstart",e=>{
+draggedItem=e.target
+})
+
+})
+
+
+document.querySelectorAll(".drop-zone").forEach(zone=>{
+
+zone.addEventListener("dragover",e=>{
+e.preventDefault()
+})
+
+zone.addEventListener("drop",e=>{
+
+e.preventDefault()
+
+if(!draggedItem) return
+
+let div=document.createElement("div")
+
+div.className="planned-item"
+
+div.dataset.id=draggedItem.dataset.id
+
+div.innerText=draggedItem.dataset.name
+
+zone.appendChild(div)
+
+})
+
+})
+
+
+/* -------------------------
+Save Planner
+------------------------- */
+
+async function savePlanner(){
+
+let plan={}
+
+document.querySelectorAll(".drop-zone").forEach(zone=>{
+
+let day=zone.dataset.day
+
+plan[day]=[]
+
+zone.querySelectorAll(".planned-item").forEach(item=>{
+
+plan[day].push(item.dataset.id)
+
+})
+
+})
+
+try{
+
+let res=await fetch("/api/planner/save",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify(plan)
+
+})
+
+let data=await res.json()
+
+if(data.success){
+
+alert("Planner saved successfully")
+
+}
+
+}catch(err){
+
+console.error(err)
+
+}
+
+}
+
+
+/* -------------------------
+Load Planner
+------------------------- */
+
+async function loadPlanner(){
+
+try{
+
+let res=await fetch("/api/planner/load")
+
+let plan=await res.json()
+
+Object.keys(plan).forEach(day=>{
+
+let zone=document.querySelector(`.drop-zone[data-day="${day}"]`)
+
+if(!zone) return
+
+plan[day].forEach(id=>{
+
+let source=document.querySelector(`[data-id="${id}"]`)
+
+if(!source) return
+
+let div=document.createElement("div")
+
+div.className="planned-item"
+
+div.dataset.id=id
+
+div.innerText=source.dataset.name
+
+zone.appendChild(div)
+
+})
+
+})
+
+}catch(err){
+
+console.error(err)
+
+}
+
+}
+
+
+/* -------------------------
+Load on Page Start
+------------------------- */
+
+window.onload=loadPlanner
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+

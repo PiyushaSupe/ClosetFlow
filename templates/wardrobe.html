@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<title>ClosetFlow Wardrobe Manager</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="/static/style.css">
+
+<script src="/static/wardrobe.js" defer></script>
+
+<style>
+
+body{
+margin:0;
+font-family:"Segoe UI",sans-serif;
+background:#0f172a;
+color:white;
+display:flex;
+min-height:100vh;
+}
+
+.sidebar{
+width:240px;
+background:#111827;
+padding:25px;
+display:flex;
+flex-direction:column;
+}
+
+.logo{
+width:60px;
+margin-bottom:10px;
+}
+
+.brand{
+font-size:22px;
+font-weight:600;
+margin-bottom:30px;
+}
+
+.nav a{
+display:block;
+padding:12px;
+margin-bottom:8px;
+text-decoration:none;
+color:#d1d5db;
+border-radius:8px;
+}
+
+.nav a:hover{
+background:#1f2937;
+color:white;
+}
+
+.main{
+flex:1;
+padding:30px;
+overflow:auto;
+}
+
+.title{
+font-size:26px;
+margin-bottom:25px;
+}
+
+.form-card{
+background:#1e293b;
+padding:20px;
+border-radius:12px;
+margin-bottom:30px;
+}
+
+.form-row{
+display:flex;
+gap:15px;
+margin-bottom:10px;
+}
+
+.form-row input,
+.form-row select{
+flex:1;
+padding:10px;
+border:none;
+border-radius:6px;
+}
+
+.btn{
+padding:10px 16px;
+border:none;
+border-radius:6px;
+background:#4CAF50;
+color:white;
+cursor:pointer;
+}
+
+.btn:hover{
+background:#43a047;
+}
+
+.wardrobe-section{
+margin-bottom:40px;
+}
+
+.wardrobe-table{
+width:100%;
+border-collapse:collapse;
+margin-top:10px;
+}
+
+.wardrobe-table th,
+.wardrobe-table td{
+padding:10px;
+border-bottom:1px solid #334155;
+text-align:left;
+}
+
+.wardrobe-table button{
+margin-right:6px;
+padding:5px 10px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+.tag-worn{
+background:#ff4d4d;
+color:white;
+padding:4px 8px;
+border-radius:6px;
+font-size:12px;
+}
+
+.tag-unworn{
+background:#3498db;
+color:white;
+padding:4px 8px;
+border-radius:6px;
+font-size:12px;
+}
+
+.toast{
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+background:#4CAF50;
+color:white;
+padding:10px 16px;
+border-radius:6px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<div class="sidebar">
+
+<img src="/static/logo.png" class="logo">
+
+<div class="brand">ClosetFlow</div>
+
+<div class="nav">
+
+<a href="/dashboard">Dashboard</a>
+<a href="/wardrobe">Wardrobe Manager</a>
+<a href="/planner">Planner</a>
+<a href="/analytics">Analytics</a>
+<a href="/logout">Logout</a>
+
+</div>
+
+</div>
+
+
+
+<div class="main">
+
+<div class="title">Wardrobe Manager</div>
+
+
+<div class="form-card">
+
+<h3>Add Clothing Item</h3>
+
+<div class="form-row">
+
+<input id="clothName" placeholder="Clothing name">
+
+<input id="clothColor" placeholder="Color">
+
+<select id="clothSection">
+
+<option value="">Select Section</option>
+
+<option>Jeans</option>
+<option>Trousers</option>
+<option>Ethnics</option>
+<option>Shirts</option>
+<option>T-Shirts</option>
+<option>Hoodies</option>
+<option>Jackets</option>
+<option>Blazers</option>
+<option>Tops</option>
+<option>Pyjamas and Loungewear</option>
+<option>Dresses</option>
+<option>Skirts</option>
+
+</select>
+
+<button class="btn" onclick="addCloth()">Add</button>
+
+</div>
+
+</div>
+
+
+
+<div id="wardrobeContainer">
+
+<!-- wardrobe tables rendered here -->
+
+</div>
+
+</div>
+
+</body>
+
+</html>

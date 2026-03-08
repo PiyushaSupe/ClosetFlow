@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<title>ClosetFlow Register</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="/static/style.css">
+
+<style>
+
+body{
+    margin:0;
+    padding:0;
+    font-family:"Segoe UI",sans-serif;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#141e30,#243b55);
+    overflow:hidden;
+}
+
+.background-animation{
+    position:absolute;
+    width:200%;
+    height:200%;
+    background:
+        radial-gradient(circle at 10% 10%,rgba(255,255,255,0.08),transparent),
+        radial-gradient(circle at 90% 90%,rgba(255,255,255,0.08),transparent);
+    animation:moveBG 20s linear infinite;
+}
+
+@keyframes moveBG{
+    from{transform:translate(0,0)}
+    to{transform:translate(-250px,-250px)}
+}
+
+.register-container{
+    position:relative;
+    width:440px;
+    padding:40px;
+    border-radius:16px;
+    backdrop-filter:blur(18px);
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.25);
+    box-shadow:0 20px 45px rgba(0,0,0,0.3);
+    text-align:center;
+}
+
+.logo{
+    width:70px;
+    margin-bottom:15px;
+}
+
+.title{
+    font-size:28px;
+    font-weight:600;
+    color:white;
+}
+
+.subtitle{
+    font-size:14px;
+    color:#dcdcdc;
+    margin-bottom:25px;
+}
+
+.input-group{
+    text-align:left;
+    margin-bottom:18px;
+}
+
+.input-group label{
+    font-size:13px;
+    color:#f1f1f1;
+}
+
+.input-group input{
+    width:100%;
+    margin-top:6px;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    outline:none;
+    font-size:14px;
+}
+
+.register-btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#00c853;
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.register-btn:hover{
+    background:#00b248;
+    transform:scale(1.05);
+}
+
+.login-link{
+    margin-top:18px;
+    font-size:14px;
+    color:#e0e0e0;
+}
+
+.login-link a{
+    color:white;
+    font-weight:600;
+    text-decoration:none;
+}
+
+.login-link a:hover{
+    text-decoration:underline;
+}
+
+.error{
+    background:#ff5252;
+    color:white;
+    padding:10px;
+    border-radius:8px;
+    margin-bottom:15px;
+    font-size:13px;
+}
+
+@media(max-width:500px){
+
+.register-container{
+    width:90%;
+}
+
+}
+
+</style>
+
+<script>
+
+function validateForm(){
+
+    let password = document.getElementById("password").value;
+    let confirm = document.getElementById("confirm_password").value;
+
+    if(password.length < 6){
+
+        alert("Password must be at least 6 characters");
+
+        return false;
+    }
+
+    if(password !== confirm){
+
+        alert("Passwords do not match");
+
+        return false;
+    }
+
+    return true;
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="background-animation"></div>
+
+<div class="register-container">
+
+<img src="/static/logo.png" class="logo">
+
+<div class="title">Create Account</div>
+<div class="subtitle">Start organizing your wardrobe</div>
+
+{% if error %}
+<div class="error">{{ error }}</div>
+{% endif %}
+
+<form method="POST" action="/register" onsubmit="return validateForm()">
+
+<div class="input-group">
+<label>Username</label>
+<input type="text" name="username" required>
+</div>
+
+<div class="input-group">
+<label>Email</label>
+<input type="email" name="email" required>
+</div>
+
+<div class="input-group">
+<label>Password</label>
+<input type="password" id="password" name="password" required>
+</div>
+
+<div class="input-group">
+<label>Confirm Password</label>
+<input type="password" id="confirm_password" required>
+</div>
+
+<button class="register-btn">Create Account</button>
+
+</form>
+
+<div class="login-link">
+Already have an account? 
+<a href="/login">Login</a>
+</div>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,198 @@
+{
+  "clothes": [
+    {
+      "id": "C001",
+      "user_id": "U001",
+      "name": "White shirt",
+      "section": "Shirts",
+      "category": "top",
+      "type": "shirt",
+      "color": "white",
+      "color_hex": "#ffffff",
+      "pattern": "solid",
+      "material": "cotton",
+      "season": [
+        "summer",
+        "spring"
+      ],
+      "occasion": [
+        "casual",
+        "formal"
+      ],
+      "temperature_range": [
+        18,
+        35
+      ],
+      "style_tags": [
+        "minimal",
+        "clean",
+        "classic"
+      ],
+      "last_worn": "2026-03-08",
+      "wear_count": 13,
+      "favorite": true,
+      "rating": 4.6,
+      "status": "worn"
+    },
+    {
+      "id": "C002",
+      "user_id": "U001",
+      "name": "Black Slim Jeans",
+      "section": "Jeans",
+      "category": "bottom",
+      "type": "jeans",
+      "color": "black",
+      "color_hex": "#000000",
+      "pattern": "solid",
+      "material": "denim",
+      "season": [
+        "all"
+      ],
+      "occasion": [
+        "casual"
+      ],
+      "temperature_range": [
+        10,
+        40
+      ],
+      "style_tags": [
+        "street",
+        "modern"
+      ],
+      "last_worn": "2026-02-28",
+      "wear_count": 11,
+      "favorite": true,
+      "rating": 4.7,
+      "status": "worn"
+    },
+    {
+      "id": "C004",
+      "user_id": "U002",
+      "name": "Grey Hoodie",
+      "section": "Hoodies",
+      "category": "top",
+      "type": "hoodie",
+      "color": "grey",
+      "color_hex": "#808080",
+      "pattern": "solid",
+      "material": "fleece",
+      "season": [
+        "winter"
+      ],
+      "occasion": [
+        "casual",
+        "home"
+      ],
+      "temperature_range": [
+        5,
+        18
+      ],
+      "style_tags": [
+        "comfort",
+        "street"
+      ],
+      "last_worn": "2026-02-15",
+      "wear_count": 5,
+      "favorite": false,
+      "rating": 4.1,
+      "status": "worn"
+    },
+    {
+      "id": "C005",
+      "user_id": "U002",
+      "name": "Navy Formal Blazer",
+      "section": "Blazers",
+      "category": "outerwear",
+      "type": "blazer",
+      "color": "navy",
+      "color_hex": "#1c2b4a",
+      "pattern": "solid",
+      "material": "wool",
+      "season": [
+        "winter",
+        "autumn"
+      ],
+      "occasion": [
+        "formal",
+        "business"
+      ],
+      "temperature_range": [
+        10,
+        20
+      ],
+      "style_tags": [
+        "formal",
+        "elegant"
+      ],
+      "last_worn": "2026-02-20",
+      "wear_count": 4,
+      "favorite": true,
+      "rating": 4.8,
+      "status": "worn"
+    },
+    {
+      "id": "C006",
+      "user_id": "U001",
+      "name": "Light Blue Casual Shirt",
+      "section": "Shirts",
+      "category": "top",
+      "type": "shirt",
+      "color": "light_blue",
+      "color_hex": "#87CEEB",
+      "pattern": "solid",
+      "material": "cotton",
+      "season": [
+        "summer",
+        "spring"
+      ],
+      "occasion": [
+        "casual"
+      ],
+      "temperature_range": [
+        20,
+        38
+      ],
+      "style_tags": [
+        "fresh",
+        "minimal"
+      ],
+      "last_worn": "2026-03-08",
+      "wear_count": 11,
+      "favorite": false,
+      "rating": 4.2,
+      "status": "worn"
+    },
+    {
+      "id": "84f32522-b485-4baa-8aa3-2c40d3c6f6cb",
+      "user_id": "U001",
+      "name": "Black Ethnic Kurta",
+      "section": "Ethnics",
+      "category": "top",
+      "type": "kurta",
+      "color": "black",
+      "color_hex": "#000000",
+      "pattern": "solid",
+      "material": "cotton",
+      "season": [
+        "summer",
+        "spring"
+      ],
+      "occasion": [
+        "traditional",
+        "casual"
+      ],
+      "temperature_range": [
+        18,
+        35
+      ],
+      "style_tags": [
+        "traditional"
+      ],
+      "last_worn": "2026-03-08",
+      "wear_count": 2,
+      "favorite": false,
+      "rating": 4.0,
+      "status": "unworn"
+    }
+  ]
+}

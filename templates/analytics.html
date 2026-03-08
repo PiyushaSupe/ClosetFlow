@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<title>ClosetFlow Analytics</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="/static/style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+body{
+margin:0;
+font-family:"Segoe UI",sans-serif;
+background:#0f172a;
+color:white;
+display:flex;
+min-height:100vh;
+}
+
+/* Sidebar */
+
+.sidebar{
+width:240px;
+background:#111827;
+padding:25px;
+display:flex;
+flex-direction:column;
+}
+
+.logo{
+width:60px;
+margin-bottom:10px;
+}
+
+.brand{
+font-size:22px;
+font-weight:600;
+margin-bottom:30px;
+}
+
+.nav a{
+display:block;
+padding:12px;
+margin-bottom:8px;
+text-decoration:none;
+color:#d1d5db;
+border-radius:8px;
+transition:0.2s;
+}
+
+.nav a:hover{
+background:#1f2937;
+color:white;
+}
+
+/* Main */
+
+.main{
+flex:1;
+padding:30px;
+overflow:auto;
+}
+
+.title{
+font-size:26px;
+margin-bottom:25px;
+}
+
+/* Cards */
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+margin-bottom:30px;
+}
+
+.stat-card{
+background:#1e293b;
+padding:20px;
+border-radius:12px;
+}
+
+.stat-title{
+font-size:14px;
+color:#9ca3af;
+}
+
+.stat-value{
+font-size:24px;
+font-weight:600;
+margin-top:6px;
+}
+
+/* Charts */
+
+.charts{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+margin-bottom:30px;
+}
+
+.chart-card{
+background:#1e293b;
+padding:20px;
+border-radius:12px;
+}
+
+/* Lists */
+
+.list-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.list-card{
+background:#1e293b;
+padding:20px;
+border-radius:12px;
+}
+
+.list-item{
+font-size:13px;
+margin-bottom:6px;
+}
+
+.heatmap{
+display:grid;
+grid-template-columns:repeat(14,1fr);
+gap:4px;
+margin-top:10px;
+}
+
+.heat-cell{
+width:12px;
+height:12px;
+background:#1f2937;
+border-radius:2px;
+}
+
+.heat-high{
+background:#4CAF50;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<img src="/static/logo.png" class="logo">
+
+<div class="brand">ClosetFlow</div>
+
+<div class="nav">
+
+<a href="/dashboard">Dashboard</a>
+<a href="/wardrobe">Wardrobe Manager</a>
+<a href="/planner">Planner</a>
+<a href="/analytics">Analytics</a>
+<a href="/logout">Logout</a>
+
+</div>
+
+</div>
+
+
+<div class="main">
+
+<div class="title">Wardrobe Analytics</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+<div class="stat-title">Total Clothes</div>
+<div class="stat-value" id="totalClothes">0</div>
+</div>
+
+<div class="stat-card">
+<div class="stat-title">Outfits Worn</div>
+<div class="stat-value" id="outfitsWorn">0</div>
+</div>
+
+<div class="stat-card">
+<div class="stat-title">Favorite Category</div>
+<div class="stat-value" id="favCategory">-</div>
+</div>
+
+</div>
+
+
+<div class="charts">
+
+<div class="chart-card">
+<canvas id="categoryChart"></canvas>
+</div>
+
+<div class="chart-card">
+<canvas id="weeklyChart"></canvas>
+</div>
+
+</div>
+
+
+<div class="list-grid">
+
+<div class="list-card">
+
+<h3>Most Worn Items</h3>
+
+<div id="mostWorn"></div>
+
+</div>
+
+<div class="list-card">
+
+<h3>Least Worn Items</h3>
+
+<div id="leastWorn"></div>
+
+</div>
+
+<div class="list-card">
+
+<h3>Not Worn For Long Time</h3>
+
+<div id="unusedItems"></div>
+
+</div>
+
+</div>
+
+
+<div class="list-card" style="margin-top:25px">
+
+<h3>Wear Activity Heatmap</h3>
+
+<div class="heatmap" id="heatmap"></div>
+
+</div>
+
+</div>
+
+
+<script>
+
+async function loadAnalytics(){
+
+let res=await fetch("/api/analytics")
+
+let data=await res.json()
+
+/* Stats */
+
+document.getElementById("totalClothes").innerText=data.wardrobe_stats.total_clothes
+document.getElementById("outfitsWorn").innerText=data.wardrobe_stats.total_outfits_worn
+document.getElementById("favCategory").innerText=data.wardrobe_stats.favorite_category
+
+/* Category Chart */
+
+new Chart(document.getElementById("categoryChart"),{
+
+type:"pie",
+
+data:{
+labels:Object.keys(data.category_distribution),
+datasets:[{
+data:Object.values(data.category_distribution)
+}]
+}
+
+})
+
+/* Weekly Chart */
+
+new Chart(document.getElementById("weeklyChart"),{
+
+type:"line",
+
+data:{
+labels:Object.keys(data.weekly_usage),
+datasets:[{
+label:"Outfits",
+data:Object.values(data.weekly_usage),
+fill:false
+}]
+}
+
+})
+
+/* Most worn */
+
+let most=document.getElementById("mostWorn")
+
+data.most_worn_items.forEach(item=>{
+
+let div=document.createElement("div")
+
+div.className="list-item"
+
+div.innerText=item.name+" ("+item.wear_count+")"
+
+most.appendChild(div)
+
+})
+
+/* Least worn */
+
+let least=document.getElementById("leastWorn")
+
+data.least_worn_items.forEach(item=>{
+
+let div=document.createElement("div")
+
+div.className="list-item"
+
+div.innerText=item.name+" ("+item.wear_count+")"
+
+least.appendChild(div)
+
+})
+
+/* Unused */
+
+let unused=document.getElementById("unusedItems")
+
+data.not_worn_long_time.forEach(item=>{
+
+let div=document.createElement("div")
+
+div.className="list-item"
+
+div.innerText=item.item.name+" ("+item.days_unused+" days)"
+
+unused.appendChild(div)
+
+})
+
+/* Heatmap */
+
+let heat=document.getElementById("heatmap")
+
+Object.values(data.heatmap).forEach(v=>{
+
+let cell=document.createElement("div")
+
+cell.className="heat-cell"
+
+if(v>0){
+cell.classList.add("heat-high")
+}
+
+heat.appendChild(cell)
+
+})
+
+}
+
+loadAnalytics()
+
+</script>
+
+</body>
+</html>

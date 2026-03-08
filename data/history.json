@@ -1,0 +1,165 @@
+{
+  "wear_history": [
+
+    {
+      "history_id": "H001",
+      "user_id": "U001",
+      "date": "2026-03-05",
+      "outfit": {
+        "top": "C001",
+        "bottom": "C002",
+        "outerwear": null,
+        "footwear": "C008",
+        "accessory": "C010"
+      },
+      "temperature": 29,
+      "weather_condition": "clear",
+      "occasion": "casual",
+      "planner_generated": false,
+      "recommended_by_ai": true,
+      "user_rating": 5,
+      "notes": "Comfortable outfit for warm day"
+    },
+
+    {
+      "history_id": "H002",
+      "user_id": "U001",
+      "date": "2026-03-04",
+      "outfit": {
+        "top": "C006",
+        "bottom": "C002",
+        "outerwear": null,
+        "footwear": "C008",
+        "accessory": null
+      },
+      "temperature": 31,
+      "weather_condition": "sunny",
+      "occasion": "casual",
+      "planner_generated": false,
+      "recommended_by_ai": true,
+      "user_rating": 4,
+      "notes": "Light shirt worked well for heat"
+    },
+
+    {
+      "history_id": "H003",
+      "user_id": "U001",
+      "date": "2026-03-02",
+      "outfit": {
+        "top": "C001",
+        "bottom": "C002",
+        "outerwear": "C003",
+        "footwear": "C008",
+        "accessory": null
+      },
+      "temperature": 22,
+      "weather_condition": "cloudy",
+      "occasion": "casual",
+      "planner_generated": true,
+      "recommended_by_ai": false,
+      "user_rating": 4,
+      "notes": "Evening outing"
+    },
+
+    {
+      "history_id": "H004",
+      "user_id": "U001",
+      "date": "2026-02-28",
+      "outfit": {
+        "top": "C006",
+        "bottom": "C002",
+        "outerwear": null,
+        "footwear": "C008",
+        "accessory": "C010"
+      },
+      "temperature": 27,
+      "weather_condition": "clear",
+      "occasion": "casual",
+      "planner_generated": false,
+      "recommended_by_ai": true,
+      "user_rating": 5,
+      "notes": ""
+    },
+
+    {
+      "history_id": "H005",
+      "user_id": "U001",
+      "date": "2026-02-25",
+      "outfit": {
+        "top": "C001",
+        "bottom": "C002",
+        "outerwear": "C005",
+        "footwear": "C009",
+        "accessory": "C010"
+      },
+      "temperature": 21,
+      "weather_condition": "clear",
+      "occasion": "formal",
+      "planner_generated": false,
+      "recommended_by_ai": false,
+      "user_rating": 5,
+      "notes": "Business meeting"
+    },
+
+    {
+      "history_id": "H006",
+      "user_id": "U002",
+      "date": "2026-02-20",
+      "outfit": {
+        "top": "C004",
+        "bottom": "C007",
+        "outerwear": null,
+        "footwear": "C008",
+        "accessory": null
+      },
+      "temperature": 18,
+      "weather_condition": "cloudy",
+      "occasion": "casual",
+      "planner_generated": true,
+      "recommended_by_ai": false,
+      "user_rating": 3,
+      "notes": ""
+    },
+
+    {
+      "history_id": "H007",
+      "user_id": "U002",
+      "date": "2026-02-15",
+      "outfit": {
+        "top": "C004",
+        "bottom": "C007",
+        "outerwear": "C003",
+        "footwear": "C008",
+        "accessory": null
+      },
+      "temperature": 15,
+      "weather_condition": "windy",
+      "occasion": "casual",
+      "planner_generated": false,
+      "recommended_by_ai": true,
+      "user_rating": 4,
+      "notes": "Cold weather"
+    },
+
+    {
+      "history_id": "H008",
+      "user_id": "U001",
+      "date": "2026-01-21",
+      "outfit": {
+        "top": "C001",
+        "bottom": "C007",
+        "outerwear": "C003",
+        "footwear": "C008",
+        "accessory": null
+      },
+      "temperature": 16,
+      "weather_condition": "cloudy",
+      "occasion": "casual",
+      "planner_generated": false,
+      "recommended_by_ai": false,
+      "user_rating": 4,
+      "notes": ""
+    }
+
+  ]
+}

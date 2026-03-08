@@ -1,0 +1,132 @@
+{
+  "sections": [
+
+    {
+      "section_id": "S001",
+      "user_id": "U001",
+      "name": "Tops",
+      "category": "top",
+      "icon": "👕",
+      "color_theme": "#6C8CF5",
+      "description": "Shirts, t-shirts, hoodies and upper wear",
+      "clothing_ids": [
+        "C001",
+        "C006"
+      ],
+      "created_at": "2026-01-10",
+      "visible_on_dashboard": true
+    },
+
+    {
+      "section_id": "S002",
+      "user_id": "U001",
+      "name": "Bottoms",
+      "category": "bottom",
+      "icon": "👖",
+      "color_theme": "#5BC0BE",
+      "description": "Jeans, trousers and pants",
+      "clothing_ids": [
+        "C002",
+        "C007"
+      ],
+      "created_at": "2026-01-10",
+      "visible_on_dashboard": true
+    },
+
+    {
+      "section_id": "S003",
+      "user_id": "U001",
+      "name": "Outerwear",
+      "category": "outerwear",
+      "icon": "🧥",
+      "color_theme": "#F08A5D",
+      "description": "Jackets, coats and blazers",
+      "clothing_ids": [
+        "C003",
+        "C005"
+      ],
+      "created_at": "2026-01-10",
+      "visible_on_dashboard": true
+    },
+
+    {
+      "section_id": "S004",
+      "user_id": "U001",
+      "name": "Footwear",
+      "category": "footwear",
+      "icon": "👟",
+      "color_theme": "#F9ED69",
+      "description": "Shoes and sneakers",
+      "clothing_ids": [
+        "C008",
+        "C009"
+      ],
+      "created_at": "2026-01-10",
+      "visible_on_dashboard": true
+    },
+
+    {
+      "section_id": "S005",
+      "user_id": "U001",
+      "name": "Accessories",
+      "category": "accessory",
+      "icon": "👜",
+      "color_theme": "#FF6B6B",
+      "description": "Belts and accessories",
+      "clothing_ids": [
+        "C010"
+      ],
+      "created_at": "2026-01-10",
+      "visible_on_dashboard": true
+    },
+
+    {
+      "section_id": "S006",
+      "user_id": "U001",
+      "name": "Favorites",
+      "category": "favorites",
+      "icon": "⭐",
+      "color_theme": "#FFD166",
+      "description": "Frequently worn favorite outfits",
+      "clothing_ids": [
+        "C001",
+        "C002",
+        "C008"
+      ],
+      "created_at": "2026-01-15",
+      "visible_on_dashboard": true
+    },
+
+    {
+      "section_id": "S007",
+      "user_id": "U002",
+      "name": "Casual Wear",
+      "category": "top",
+      "icon": "👕",
+      "color_theme": "#4ECDC4",
+      "description": "Daily casual outfits",
+      "clothing_ids": [
+        "C004"
+      ],
+      "created_at": "2026-02-01",
+      "visible_on_dashboard": true
+    },
+
+    {
+      "section_id": "S008",
+      "user_id": "U002",
+      "name": "Winter Collection",
+      "category": "outerwear",
+      "icon": "❄️",
+      "color_theme": "#7F7FD5",
+      "description": "Cold weather clothing",
+      "clothing_ids": [
+        "C003",
+        "C005"
+      ],
+      "created_at": "2026-02-01",
+      "visible_on_dashboard": true
+    }
+
+  ]
+}

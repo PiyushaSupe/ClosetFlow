@@ -1,0 +1,22 @@
+{
+  "plans": [
+    {
+      "user_id": "U001",
+      "plan": {
+        "Monday": [
+          "C001",
+          "C002"
+        ],
+        "Tuesday": [
+          "C001",
+          "C006"
+        ],
+        "Wednesday": [],
+        "Thursday": [],
+        "Friday": [],
+        "Saturday": [],
+        "Sunday": []
+      }
+    }
+  ]
+}

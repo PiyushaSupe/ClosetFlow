@@ -1,0 +1,608 @@
+/* =====================================
+ClosetFlow Global Styles
+===================================== */
+
+:root{
+
+--bg-main:#0f172a;
+--bg-card:#1e293b;
+--bg-dark:#111827;
+
+--accent:#4CAF50;
+--accent-hover:#43a047;
+
+--text-main:#ffffff;
+--text-secondary:#9ca3af;
+
+--border-radius:12px;
+
+}
+
+/* =====================================
+Global Reset
+===================================== */
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+padding:0;
+font-family:"Segoe UI",sans-serif;
+background:var(--bg-main);
+color:var(--text-main);
+}
+
+h1,h2,h3,h4{
+margin:0;
+font-weight:600;
+}
+
+/* =====================================
+Scrollbar
+===================================== */
+
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-track{
+background:#111827;
+}
+
+::-webkit-scrollbar-thumb{
+background:#374151;
+border-radius:4px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+background:#4b5563;
+}
+
+/* =====================================
+Sidebar
+===================================== */
+
+.sidebar{
+width:240px;
+background:var(--bg-dark);
+padding:25px;
+display:flex;
+flex-direction:column;
+}
+
+.logo{
+width:60px;
+margin-bottom:10px;
+}
+
+.brand{
+font-size:22px;
+font-weight:600;
+margin-bottom:30px;
+}
+
+.nav a{
+display:block;
+padding:12px;
+margin-bottom:8px;
+text-decoration:none;
+color:#d1d5db;
+border-radius:8px;
+transition:0.25s;
+}
+
+.nav a:hover{
+background:#1f2937;
+color:white;
+}
+
+/* =====================================
+Main Layout
+===================================== */
+
+.main{
+flex:1;
+padding:30px;
+overflow:auto;
+}
+
+.title{
+font-size:26px;
+margin-bottom:20px;
+}
+
+/* =====================================
+Buttons
+===================================== */
+
+.btn{
+padding:10px 16px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:600;
+transition:0.2s;
+}
+
+.btn-primary{
+background:var(--accent);
+color:white;
+}
+
+.btn-primary:hover{
+background:var(--accent-hover);
+transform:scale(1.05);
+}
+
+.btn-danger{
+background:#ef4444;
+color:white;
+}
+
+.btn-danger:hover{
+background:#dc2626;
+}
+
+/* =====================================
+Cards
+===================================== */
+
+.card{
+background:var(--bg-card);
+border-radius:var(--border-radius);
+padding:20px;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+/* =====================================
+Wardrobe Grid
+===================================== */
+
+.wardrobe-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+gap:15px;
+}
+
+.cloth-card{
+background:var(--bg-card);
+padding:15px;
+border-radius:var(--border-radius);
+cursor:pointer;
+transition:0.25s;
+position:relative;
+overflow:hidden;
+}
+
+.cloth-card:hover{
+transform:translateY(-5px);
+box-shadow:0 8px 30px rgba(0,0,0,0.4);
+}
+
+.cloth-name{
+font-size:14px;
+font-weight:600;
+margin-bottom:4px;
+}
+
+.cloth-meta{
+font-size:12px;
+color:var(--text-secondary);
+}
+
+/* =====================================
+Outfit Recommendation
+===================================== */
+
+.recommendation{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+background:var(--bg-card);
+padding:20px;
+border-radius:var(--border-radius);
+}
+
+.outfit-card{
+background:var(--bg-dark);
+padding:15px;
+border-radius:10px;
+min-width:120px;
+text-align:center;
+transition:0.2s;
+}
+
+.outfit-card:hover{
+transform:scale(1.05);
+}
+
+.outfit-card span{
+display:block;
+font-size:12px;
+color:var(--text-secondary);
+margin-top:5px;
+}
+
+/* =====================================
+Planner
+===================================== */
+
+.planner-container{
+display:grid;
+grid-template-columns:250px 1fr;
+gap:25px;
+}
+
+.wardrobe{
+background:var(--bg-card);
+padding:15px;
+border-radius:var(--border-radius);
+}
+
+.cloth-item{
+background:var(--bg-dark);
+padding:10px;
+margin-bottom:8px;
+border-radius:8px;
+cursor:grab;
+font-size:13px;
+transition:0.2s;
+}
+
+.cloth-item:hover{
+background:#1f2937;
+}
+
+.week{
+display:grid;
+grid-template-columns:repeat(7,1fr);
+gap:10px;
+}
+
+.day{
+background:var(--bg-card);
+border-radius:10px;
+min-height:150px;
+padding:10px;
+display:flex;
+flex-direction:column;
+}
+
+.day-title{
+font-size:14px;
+font-weight:600;
+margin-bottom:6px;
+}
+
+.drop-zone{
+flex:1;
+border:2px dashed #334155;
+border-radius:8px;
+padding:6px;
+}
+
+.planned-item{
+background:var(--accent);
+padding:6px;
+border-radius:6px;
+font-size:12px;
+margin-bottom:5px;
+}
+
+/* =====================================
+Analytics
+===================================== */
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+margin-bottom:30px;
+}
+
+.stat-card{
+background:var(--bg-card);
+padding:20px;
+border-radius:var(--border-radius);
+}
+
+.stat-title{
+font-size:14px;
+color:var(--text-secondary);
+}
+
+.stat-value{
+font-size:24px;
+font-weight:600;
+margin-top:6px;
+}
+
+.charts{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+margin-bottom:30px;
+}
+
+.chart-card{
+background:var(--bg-card);
+padding:20px;
+border-radius:var(--border-radius);
+}
+
+.list-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.list-card{
+background:var(--bg-card);
+padding:20px;
+border-radius:var(--border-radius);
+}
+
+.list-item{
+font-size:13px;
+margin-bottom:6px;
+}
+
+/* =====================================
+Heatmap
+===================================== */
+
+.heatmap{
+display:grid;
+grid-template-columns:repeat(14,1fr);
+gap:4px;
+margin-top:10px;
+}
+
+.heat-cell{
+width:12px;
+height:12px;
+background:#1f2937;
+border-radius:2px;
+}
+
+.heat-high{
+background:var(--accent);
+}
+
+/* =====================================
+Chat Assistant
+===================================== */
+
+.chat-box{
+position:fixed;
+right:20px;
+bottom:20px;
+width:320px;
+background:var(--bg-dark);
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+display:flex;
+flex-direction:column;
+}
+
+.chat-header{
+padding:10px;
+background:#1f2937;
+border-radius:12px 12px 0 0;
+font-weight:600;
+}
+
+.chat-messages{
+height:200px;
+overflow:auto;
+padding:10px;
+font-size:13px;
+}
+
+.chat-input{
+display:flex;
+border-top:1px solid #374151;
+}
+
+.chat-input input{
+flex:1;
+border:none;
+padding:10px;
+background:var(--bg-dark);
+color:white;
+}
+
+.chat-input button{
+border:none;
+background:var(--accent);
+color:white;
+padding:10px 15px;
+cursor:pointer;
+}
+
+/* =====================================
+Animations
+===================================== */
+
+.fade-in{
+animation:fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(10px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* =====================================
+Responsive
+===================================== */
+
+@media(max-width:900px){
+
+.sidebar{
+display:none;
+}
+
+.main{
+padding:15px;
+}
+
+.charts{
+grid-template-columns:1fr;
+}
+
+.planner-container{
+grid-template-columns:1fr;
+}
+
+.week{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:500px){
+
+.wardrobe-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.week{
+grid-template-columns:1fr;
+}
+
+.chat-box{
+width:90%;
+right:5%;
+}
+
+}
+
+
+/* ===============================
+Wardrobe Section Cards
+================================ */
+
+.section-card{
+background:#111827;
+border-radius:14px;
+padding:20px;
+margin-bottom:30px;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+border:1px solid #1f2937;
+}
+
+/* Section header */
+
+.section-header{
+display:flex;
+align-items:center;
+gap:10px;
+font-size:20px;
+font-weight:600;
+margin-bottom:15px;
+color:#e5e7eb;
+}
+
+.section-icon{
+font-size:22px;
+}
+
+.section-title{
+letter-spacing:0.5px;
+}
+
+
+/* ===============================
+Table Improvements
+================================ */
+
+.wardrobe-table{
+width:100%;
+border-collapse:separate;
+border-spacing:0 8px;
+}
+
+.wardrobe-table thead th{
+text-align:left;
+padding:10px;
+font-weight:500;
+color:#9ca3af;
+}
+
+.wardrobe-table tbody tr{
+background:#1f2937;
+border-radius:10px;
+transition:all 0.2s ease;
+}
+
+.wardrobe-table tbody tr:hover{
+background:#293548;
+transform:scale(1.01);
+}
+
+.wardrobe-table td{
+padding:12px;
+}
+
+
+/* ===============================
+Status Tags
+================================ */
+
+.tag-worn{
+background:#ef4444;
+padding:4px 10px;
+border-radius:8px;
+font-size:12px;
+font-weight:500;
+}
+
+.tag-unworn{
+background:#3b82f6;
+padding:4px 10px;
+border-radius:8px;
+font-size:12px;
+font-weight:500;
+}
+
+
+/* ===============================
+Buttons
+================================ */
+
+.wardrobe-table button{
+border:none;
+padding:6px 12px;
+border-radius:8px;
+cursor:pointer;
+font-size:13px;
+transition:0.2s;
+}
+
+.wardrobe-table button:nth-child(1){
+background:#2563eb;
+color:white;
+}
+
+.wardrobe-table button:nth-child(2){
+background:#f59e0b;
+color:white;
+}
+
+.wardrobe-table button:nth-child(3){
+background:#ef4444;
+color:white;
+}
+
+.wardrobe-table button:hover{
+opacity:0.85;
+}
